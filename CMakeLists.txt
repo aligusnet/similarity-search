@@ -5,6 +5,4 @@ project(similarity-search)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-file(GLOB SRC src/*.cpp src/*.h)
-
-add_executable(ssearch ${SRC})
+add_subdirectory(src)

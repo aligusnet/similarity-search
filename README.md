@@ -1,14 +1,6 @@
 # Similarity Search
 
-## Usage
-
-```
-% make ui         # build the project and run UI for 100 million people
-% make benchmark  # build the project and run benchmark tests for 100 million people
-% make test       # build the project and run tests for 1 million people
-```
-
-## Benchmark results
+## Vantage-Point Tree Benchmark results
 
 ### 100 million people
 
