@@ -10,7 +10,9 @@ namespace aligusnet {
 
 // Vantage-Point tree
 // https://en.wikipedia.org/wiki/Vantage-point_tree
-// Complexity guarantee from http://pnylab.com/pny/papers/vptree/vptree.pdf:
+// Complexity guarantee from 
+// Data Structures and Algorithms for Nearest Neighbor Search in General Metric Spaces by Peter N. Yianilos 
+// (http://pnylab.com/papers/vptree/main.html):
 // Vantage-Point tree construction executes in O(n*log(n))
 // and expected search time is O(log(n)).
 
@@ -130,9 +132,6 @@ private:
         }
       }
 
-      // heurustic described by Peter N. Yianilos:
-      // http://pnylab.com/pny/papers/vptree/vptree.pdf
-      // crucial part of the algorithm, actually
       if (dist < node.bound) {
         if (dist - record <= node.bound) {
           search(node.left);
