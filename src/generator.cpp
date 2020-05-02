@@ -9,8 +9,8 @@ void generate(const GeneratorParams &params,
 
     std::default_random_engine generator;
     std::uniform_int_distribution<unsigned> age_distribution(params.age.lower, params.age.upper);
-    std::normal_distribution<double> longitude_distribution(params.longitude.mean, params.longitude.stddev);
-    std::normal_distribution<double> latitude_distribution(params.longitude.mean, params.longitude.stddev);
+    std::normal_distribution<float> longitude_distribution(params.longitude.mean, params.longitude.stddev);
+    std::normal_distribution<float> latitude_distribution(params.longitude.mean, params.longitude.stddev);
 
     std::vector<Person> &people = *ppeople;
     for (unsigned i = 0; i < params.number; ++i) {

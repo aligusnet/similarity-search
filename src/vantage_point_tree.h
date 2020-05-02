@@ -53,13 +53,14 @@ private:
     std::mt19937 g(rd());
     std::shuffle(items_.begin(), items_.end(), g);
     nodes_.resize(items_.size());
-    root_index_ = build(0, items_.size());
+    root_index_ = build(0, static_cast<unsigned>(items_.size()));
   }
 
   unsigned build(unsigned start, unsigned finish) {
     if (start >= finish) {
-      return items_.size();
+      return static_cast<unsigned>(items_.size());
     }
+
     Node &node = nodes_[start];
     node.index = start;
 

@@ -121,7 +121,7 @@ void run_benchmark(const World &world) {
     auto res = vpt.search(test, g_neighbors_number);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end-begin).count();
-    durations.push_back(duration);
+    durations.push_back(static_cast<int>(duration));
   }
 
   std::sort(durations.begin(), durations.end());
@@ -129,8 +129,8 @@ void run_benchmark(const World &world) {
   double mean = std::accumulate(durations.begin(), durations.end(), 0);
   mean /= durations.size();
 
-  auto quantile95 = durations[durations.size()*0.95];
-  auto quantile99 = durations[durations.size()*0.99];
+  auto quantile95 = durations[static_cast<size_t>(durations.size()*0.95)];
+  auto quantile99 = durations[static_cast<size_t>(durations.size()*0.99)];
 
   std::cout << "average value: " << mean << " microseconds" << std::endl;
   std::cout << "0.95 quantile: " << quantile95 << " microseconds" << std::endl;
@@ -143,8 +143,8 @@ float calculate_error(const std::vector<std::pair<aligusnet::Person, float>> &lh
     return acc + p1.second;
   };
 
-  float lhs_sum = std::accumulate(lhs.begin(), lhs.end(), 0.0, acc_fn);
-  float rhs_sum = std::accumulate(rhs.begin(), rhs.end(), 0.0, acc_fn);
+  float lhs_sum = std::accumulate(lhs.begin(), lhs.end(), 0.0f, acc_fn);
+  float rhs_sum = std::accumulate(rhs.begin(), rhs.end(), 0.0f, acc_fn);
 
   return fabs(lhs_sum - rhs_sum);
 }
