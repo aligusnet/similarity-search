@@ -4,6 +4,7 @@
 #include <queue>
 #include <algorithm>
 #include <functional>
+#include <random>
 
 namespace aligusnet {
 
@@ -48,7 +49,9 @@ private:
   unsigned root_index_;  // always 0 but keep it to avoid "magic numbers"
 
   void init() {
-    std::random_shuffle(items_.begin(), items_.end());
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(items_.begin(), items_.end(), g);
     nodes_.resize(items_.size());
     root_index_ = build(0, items_.size());
   }
